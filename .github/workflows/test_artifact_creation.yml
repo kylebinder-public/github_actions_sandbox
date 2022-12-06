@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: mkdir -p path/to/UL-artifact
-    - run: echo hello > path/to/artifact/world.txt
+    - run: echo hello > path/to/UL-artifact/world.txt
     - uses: actions/upload-artifact@v3
       with:
         name: my-UL-artifact
@@ -22,7 +22,7 @@ jobs:
     - uses: actions/download-artifact@v3
       with:
         name: my-DL-artifact
-        path: path/to/DL-artifact
+        path: path/to/UL-artifact
     - name: Display structure of downloaded files
       run: ls -R
-      working-directory: path/to/DL-artifact
+      working-directory: path/to/UL-artifact
