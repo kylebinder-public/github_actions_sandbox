@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/download-artifact@v3
       with:
-        name: my-DL-artifact
+        name: world.txt
         path: path/to/UL-artifact
     - name: Display structure of downloaded files
       run: ls -R
