@@ -1,10 +1,12 @@
-# This is a basic workflow that can be manually triggered or run daily - see cron schedule.
+# This is a basic workflow that can be manually triggered or run daily - see cron schedule.  Will also run on any PR.
 
 name: Test_Syntax_For_Dependencies
 
 on:
   schedule:
     - cron: '45 1 * * *'
+  pull_request:
+    branches: ['main']
 
 jobs:
   # This workflow contains multiple "jobs", some with multiple "steps":
