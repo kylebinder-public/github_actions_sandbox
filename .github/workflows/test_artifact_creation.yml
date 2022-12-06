@@ -1,0 +1,28 @@
+# This is a basic workflow that is manually triggered
+
+name: Artifact_Workflow
+on:
+  workflow_dispatch:
+
+jobs:
+  upload_artifact:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: mkdir -p path/to/UL-artifact
+    - run: echo hello > path/to/artifact/world.txt
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-UL-artifact
+        path: path/to/UL-artifact/world.txt
+
+  download_artifact:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: my-DL-artifact
+        path: path/to/DL-artifact
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: path/to/DL-artifact
