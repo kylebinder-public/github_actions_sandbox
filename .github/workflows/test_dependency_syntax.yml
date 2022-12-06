@@ -1,0 +1,54 @@
+# This is a basic workflow that can be manually triggered or run daily - see cron schedule.  Will also run on any PR.
+
+name: Test_Syntax_For_Dependencies
+
+on:
+  schedule:
+    - cron: '45 1 * * *'
+  pull_request:
+    branches: ['main']
+
+jobs:
+  # This workflow contains multiple "jobs", some with multiple "steps":
+  hello_world_01:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send greeting 01
+      run: echo "Hello World 01"
+      
+  hello_world_02:
+    needs: hello_world_01
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send greeting 2A
+      run: echo "Hello World 2A"
+    - name: Send greeting 2B
+      run: echo "Hello World 2B"
+
+  hello_world_03:
+    needs: [hello_world_01, hello_world_02]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send greeting 03
+      run: echo "Hello World 03"
+      
+  hello_world_04:
+    needs: hello_world_03
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send greeting 4
+      run: echo "Hello World 4"
+      
+  hello_world_05:
+    needs: hello_world_03
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send greeting 5
+      run: echo "Hello World 5"
+
+  hello_world_06:
+    needs: [hello_world_04, hello_world_05]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send greeting 6
+      run: echo "Hello World 6"
