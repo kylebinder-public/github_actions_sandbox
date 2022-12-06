@@ -7,6 +7,8 @@ on:
     - cron: '45 1 * * *'
   pull_request:
     branches: ['main']
+  workflow_dispatch:
+    # Looks like this allows manual runs from "Actions" menu
 
 jobs:
   # This workflow contains multiple "jobs", some with multiple "steps":
